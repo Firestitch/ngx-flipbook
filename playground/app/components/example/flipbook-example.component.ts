@@ -15,7 +15,7 @@ export class ExampleComponent implements OnInit {
 
   public ngOnInit() {
     this.config = {
-      pdfUrl: './assets/pdf/full.pdf',
+      pdfUrl: './assets/pdf/example-pdf.pdf',
       previewUrl: './assets/pdf/example-pdf.jpg',
       title: 'Book Example'
     }
