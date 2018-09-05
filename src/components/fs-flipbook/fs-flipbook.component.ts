@@ -3,11 +3,11 @@ import { IFsFlipbookConfig } from '../../interfaces';
 
 
 @Component({
-  selector: 'fs-component',
+  selector: 'fs-flipbook',
   templateUrl: 'fs-flipbook.component.html',
   styleUrls: [ 'fs-flipbook.component.scss' ],
 })
-export class FsComponentComponent implements OnChanges, OnDestroy {
+export class FsFlipbookComponent implements OnChanges, OnDestroy {
   @Input() config: IFsFlipbookConfig = null;
   @ViewChild('flipBook') flipBook: ElementRef;
 

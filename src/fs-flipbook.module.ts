@@ -1,6 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FsComponentComponent } from './components/fs-flipbook/fs-flipbook.component';
+import { FsFlipbookComponent } from './components/fs-flipbook/fs-flipbook.component';
 // import { FsComponentService } from './services';
 
 declare var require: any; // for AOT compilation
@@ -16,12 +16,12 @@ require('./assets/dflip/js/dflip.js');
     CommonModule,
   ],
   exports: [
-    FsComponentComponent,
+    FsFlipbookComponent,
   ],
   entryComponents: [
   ],
   declarations: [
-    FsComponentComponent,
+    FsFlipbookComponent,
   ],
   providers: [
     // FsComponentService,
