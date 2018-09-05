@@ -27,10 +27,10 @@ require('./assets/dflip/js/dflip.js');
     // FsComponentService,
   ],
 })
-export class FsComponentModule {
+export class FsFlipbookModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: FsComponentModule,
+      ngModule: FsFlipbookModule,
       // providers: [FsComponentService]
     };
   }
