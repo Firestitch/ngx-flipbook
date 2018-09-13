@@ -1,0 +1,11 @@
+::ng-deep {
+    .df-ui-outline,
+    .df-ui-share,
+    .df-ui-more {
+        display: none;
+    }
+
+    ._df_book-title:empty {
+        display: none;
+    }
+}

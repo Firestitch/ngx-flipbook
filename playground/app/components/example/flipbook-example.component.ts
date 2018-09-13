@@ -9,9 +9,7 @@ export class ExampleComponent implements OnInit {
 
   public config: IFsFlipbookConfig;
 
-  constructor() {
-
-  }
+  constructor() {}
 
   public ngOnInit() {
     this.config = {

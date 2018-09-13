@@ -1,5 +1,5 @@
 export interface IFsFlipbookConfig {
     pdfUrl: string;
-    previewUrl: string;
-    title: string;
+    previewUrl?: string;
+    title?: string;
 }

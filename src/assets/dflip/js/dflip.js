@@ -17,6 +17,8 @@
 // import './libs/three.min.js';  // @todo import_three.js
 
 var DFLIP = DFLIP || {};
+// Firestich Component Change
+window.DFLIP = DFLIP;
 
 // old fallback
 // use DFLIP instead of PRESENTATION as of v 1.1
@@ -47,7 +49,8 @@ var PRESENTATION = DFLIP;
         webglShadow: true,
 
         // if enable sound at start (true|false)
-        soundEnable: true,
+        // Firestich Component Change (false)
+        soundEnable: false,
 
         // height of the container
         // value(eg: 320) or percentage (eg: '50%')
@@ -8023,7 +8026,6 @@ DFLIP.parseLinks = function (links) {
     DFLIP.parseBooks = function () {
 
         $('._df_button, ._df_thumb, ._df_custom, ._df_book').each(function () {
-
             var book = $(this);
 
             //fetch any existing values
@@ -8137,7 +8139,9 @@ DFLIP.parseLinks = function (links) {
         }
 
         DFLIP.preParseHash = window.location.hash;
-        DFLIP.parseBooks();
+        
+        // Firestich Component Change
+        // DFLIP.parseBooks();
 
         $('body').on('click', '._df_button, ._df_thumb, ._df_custom', function () {
 
