@@ -1,2 +1,3 @@
-export * from './example';
+export * from './flipbook-preview';
+export * from './flipbook-page';
 
