@@ -1,6 +1,5 @@
-<div [hidden]="mode !== 'preview'" class="_df_custom" #flipBook>
+<div *ngIf="mode === 'preview'" class="_df_custom" #flipBook [attr.id]="id">
     <ng-content></ng-content>
 </div>
 
-
-<div *ngIf="mode === 'page'" id="fb-container"></div>
+<div *ngIf="mode === 'page'" [attr.id]="id"></div>

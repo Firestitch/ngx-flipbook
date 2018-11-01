@@ -9,7 +9,12 @@ import { FsFlipbookModule } from '../src';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppMaterialModule } from './app/material.module';
 import { FsExampleModule } from '@firestitch/example';
-import {  FlipbookPageExampleComponent, FlipbookPreviewExampleComponent } from './app/components';
+import {
+  FlipbookPageExampleComponent,
+  FlipbookPreviewExampleComponent,
+  FlipbookPageSingleZoomExampleComponent,
+  FlipbookPageSingleBookletExampleComponent,
+} from './app/components';
 
 @NgModule({
   bootstrap: [ AppComponent ],
@@ -26,7 +31,9 @@ import {  FlipbookPageExampleComponent, FlipbookPreviewExampleComponent } from '
   declarations: [
     AppComponent,
     FlipbookPageExampleComponent,
-    FlipbookPreviewExampleComponent
+    FlipbookPreviewExampleComponent,
+    FlipbookPageSingleZoomExampleComponent,
+    FlipbookPageSingleBookletExampleComponent
   ],
   providers: [
   ],
