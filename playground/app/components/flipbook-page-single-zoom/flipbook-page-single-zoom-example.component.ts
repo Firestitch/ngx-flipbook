@@ -9,12 +9,12 @@ import { PageMode, SinglePageMode } from '../../../../src/interfaces/flipbook-op
 export class FlipbookPageSingleZoomExampleComponent implements OnInit {
 
   public config: IFsFlipbookConfig;
+  public pdfUrl = './assets/pdf/example-pdf.pdf';
 
   constructor() {}
 
   public ngOnInit() {
     this.config = {
-      pdfUrl: './assets/pdf/example-pdf.pdf',
       flipbookOptions: {
         pageMode: PageMode.SingleView,
         singlePageMode: SinglePageMode.Zoom

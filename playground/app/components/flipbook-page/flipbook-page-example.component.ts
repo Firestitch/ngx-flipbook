@@ -7,13 +7,15 @@ import { IFsFlipbookConfig } from '../../../../src/interfaces';
 })
 export class FlipbookPageExampleComponent implements OnInit {
 
-  public config: IFsFlipbookConfig;
+  public config: IFsFlipbookConfig = {};
+  public pdfUrl = './assets/pdf/example-pdf.pdf';
 
   constructor() {}
 
   public ngOnInit() {
-    this.config = {
-      pdfUrl: './assets/pdf/example-pdf.pdf'
-    }
+  }
+
+  public changePdfUrl() {
+    this.pdfUrl = './assets/pdf/second-pdf-example.pdf';
   }
 }
