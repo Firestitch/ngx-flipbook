@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IFsFlipbookConfig } from '../../../../src/interfaces';
+import { IFsFlipbookConfig } from '@firestitch/flipbook';
 
 @Component({
   selector: 'flipbook-page-example',

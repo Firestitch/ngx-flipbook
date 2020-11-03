@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IFsFlipbookConfig } from '../../../../src/interfaces';
-import { PageMode, SinglePageMode } from '../../../../src/interfaces/flipbook-options.interface';
+import { IFsFlipbookConfig, PageMode, SinglePageMode } from '@firestitch/flipbook';
+
 
 @Component({
   selector: 'flipbook-page-single-booklet-example',
