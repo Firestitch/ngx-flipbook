@@ -46,6 +46,7 @@ export class FsFlipbookComponent implements OnInit, OnDestroy {
 
   public id: string; // dynamic id for dom element
   public loaded = false;
+  public book: any;
 
   private _options: IFlipbookOptions = null;
   private _pdfUrl: string;
@@ -71,7 +72,9 @@ export class FsFlipbookComponent implements OnInit, OnDestroy {
 
         this.setDefaultOptions();
         if (this._pdfUrl) {
-          this.rerender();
+          setTimeout(() => {
+            this.rerender();
+          });
         }
 
         this._cdRef.markForCheck();
@@ -107,7 +110,7 @@ export class FsFlipbookComponent implements OnInit, OnDestroy {
 
   private openInlinePageMode() {
     // because dflip library added flipBook function to the jquery fn
-    ($('#' + this.id) as any).flipBook(this._pdfUrl, this._options);
+    this.book = ($('#' + this.id) as any).flipBook(this._pdfUrl, this._options);
 
     // for removing
     this._bookElem = document.getElementById(this.id);
@@ -142,6 +145,8 @@ export class FsFlipbookComponent implements OnInit, OnDestroy {
   }
 
   private removeDflip() {
+    this.book?.dispose();
+
     while (this._bookElem.firstChild) {
       this._bookElem.removeChild(this._bookElem.firstChild);
     }
