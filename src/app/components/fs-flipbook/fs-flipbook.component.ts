@@ -1,8 +1,19 @@
-import { Component, Input, OnDestroy, ViewChild, ElementRef, OnInit, AfterViewInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy, ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input, NgZone,
+  OnDestroy,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 import { IFsFlipbookConfig } from '../../interfaces/fs-flipbook-config.interface';
 import { IFlipbookOptions, PageMode } from '../../interfaces/flipbook-options.interface';
 
 import * as $ from 'jquery';
+import { LazyScriptLoadingService } from '../../services/lazy-scripts-loading.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 const DEFAULT_OPTIONS: IFlipbookOptions = {
   pageMode: PageMode.DoubleView
@@ -12,14 +23,18 @@ const DEFAULT_OPTIONS: IFlipbookOptions = {
   selector: 'fs-flipbook',
   templateUrl: 'fs-flipbook.component.html',
   styleUrls: [ 'fs-flipbook.component.scss' ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FsFlipbookComponent implements OnInit, OnDestroy, AfterViewInit {
+export class FsFlipbookComponent implements OnInit, OnDestroy {
   @Input() config: IFsFlipbookConfig = null;
   @Input() mode: 'preview' | 'page';
   @Input() set pdfUrl(url: string) {
     if (url) {
       this._pdfUrl = url;
-      this.rerender();
+
+      if (this.loaded) {
+        this.rerender();
+      }
     }
   }
 
@@ -30,24 +45,44 @@ export class FsFlipbookComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('flipBook') flipBook: ElementRef;
 
   public id: string; // dynamic id for dom element
+  public loaded = false;
 
   private _options: IFlipbookOptions = null;
   private _pdfUrl: string;
   private _bookElem: HTMLElement;
 
-  constructor() {}
+  private _destroy$ = new Subject<void>();
 
-  public ngOnInit() {
-    this.setDefaultOptions();
+  constructor(
+    private _lazyLoadService: LazyScriptLoadingService,
+    private _zone: NgZone,
+    private _cdRef: ChangeDetectorRef,
+  ) {
     this.id = this.generateUniqId();
   }
 
-  public ngAfterViewInit() {
-    this.render();
+  public ngOnInit() {
+    this._lazyLoadService.loadScript('/flipbook.js')
+      .pipe(
+        takeUntil(this._destroy$),
+      )
+      .subscribe(() => {
+        this.loaded = true;
+
+        this.setDefaultOptions();
+        if (this._pdfUrl) {
+          this.rerender();
+        }
+
+        this._cdRef.markForCheck();
+      });
   }
 
   public ngOnDestroy() {
     this.removeDflip();
+
+    this._destroy$.next();
+    this._destroy$.complete();
   }
 
   public render() {
@@ -61,11 +96,13 @@ export class FsFlipbookComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   public rerender() {
-    if (this._bookElem) {
-      this.removeDflip();
-      this.render();
-    }
+    this._zone.runOutsideAngular(() => {
+      if (this._bookElem) {
+        this.removeDflip();
+      }
 
+      this.render();
+    });
   }
 
   private openInlinePageMode() {

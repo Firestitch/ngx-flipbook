@@ -26,11 +26,30 @@
             ],
             "styles": [
               "playground/styles.scss",
-              "playground/assets/dflip/css/dflip.css",
-              "playground/assets/dflip/css/themify-icons.css"
+              "node_modules/@dearhive/dearflip-jquery-flipbook/dflip/css/dflip.min.css",
+              "node_modules/@dearhive/dearflip-jquery-flipbook/dflip/css/themify-icons.min.css"
             ],
             "scripts": [
-
+              {
+                "input": "node_modules/@dearhive/dearflip-jquery-flipbook/dflip/js/libs/mockup.min.js",
+                "inject": false,
+                "bundleName": "flipbook"
+              },
+              {
+                "input": "node_modules/@dearhive/dearflip-jquery-flipbook/dflip/js/dflip.min.js",
+                "inject": false,
+                "bundleName": "flipbook"
+              },
+              {
+                "input": "node_modules/@dearhive/dearflip-jquery-flipbook/dflip/js/libs/pdf.min.js",
+                "inject": false,
+                "bundleName": "flipbook"
+              },
+              {
+                "input": "node_modules/@dearhive/dearflip-jquery-flipbook/dflip/js/libs/pdf.worker.min.js",
+                "inject": false,
+                "bundleName": "flipbook"
+              }
             ],
             "allowedCommonJsDependencies": [
               "highlight.js"

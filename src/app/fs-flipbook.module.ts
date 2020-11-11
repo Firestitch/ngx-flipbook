@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 import { FsFlipbookComponent } from './components/fs-flipbook/fs-flipbook.component';
 
 declare var require: any; // for AOT compilation
@@ -9,17 +11,14 @@ declare var require: any; // for AOT compilation
 (window as any).jQuery = require('jquery');
 (window as any).PDFJS = require('pdfjs-dist/build/pdf');
 (window as any).PDFJSWorker = require('pdfjs-dist/build/pdf.worker');
-(window as any).THREE = require('./assets/dflip/js/libs/three.min.js');
 
-require('./assets/dflip/js/libs/mockup.min.js');
-require('./assets/dflip/js/dflip.js');
-require('./assets/dflip/js/libs/pdf.js');
-require('./assets/dflip/js/libs/pdf.worker.js');
+(window as any).THREE = require('@dearhive/dearflip-jquery-flipbook/dflip/js/libs/three.min.js');
 
 
 @NgModule({
   imports: [
     CommonModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     FsFlipbookComponent,

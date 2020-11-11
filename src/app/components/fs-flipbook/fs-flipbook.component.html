@@ -3,3 +3,7 @@
 </div>
 
 <div *ngIf="mode === 'page'" [attr.id]="id"></div>
+
+<ng-container *ngIf="!loaded">
+    <mat-spinner></mat-spinner>
+</ng-container>
