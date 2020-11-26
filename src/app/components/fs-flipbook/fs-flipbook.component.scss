@@ -1,15 +1,19 @@
+:host {
+  display: block;
+}
+
 ::ng-deep {
-    .df-ui-outline,
-    .df-ui-share,
-    .df-ui-more {
-        display: none;
-    }
+  .df-ui-outline,
+  .df-ui-share,
+  .df-ui-more {
+    display: none;
+  }
 
-    ._df_book-title:empty {
-        display: none;
-    }
+  ._df_book-title:empty {
+    display: none;
+  }
 
-    ._df_custom {
-        cursor: pointer;
-    }
+  ._df_custom {
+    cursor: pointer;
+  }
 }
