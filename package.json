@@ -67,7 +67,7 @@
     "ngx-toastr": "^12.0.0",
     "npm-run-all": "^4.1.5",
     "pdfjs": "2.0.0",
-    "pdfjs-dist": "2.0.489",
+    "pdfjs-dist": "4.2.67",
     "rxjs": "^6.6.0",
     "three.js": "^0.77.1",
     "tslint": "~6.1.0",
